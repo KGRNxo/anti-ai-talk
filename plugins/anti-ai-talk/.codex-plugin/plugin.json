@@ -1,0 +1,20 @@
+{
+  "name": "anti-ai-talk",
+  "version": "1.0.0",
+  "description": "Removes formulaic LLM prose from everything Codex writes. 100 rules for German and English, applicable to any language.",
+  "author": { "name": "KGRNxo" },
+  "homepage": "https://github.com/KGRNxo/anti-ai-talk",
+  "repository": "https://github.com/KGRNxo/anti-ai-talk",
+  "license": "MIT",
+  "keywords": ["writing", "style", "anti-slop", "humanizer", "deutsch", "english", "multilingual"],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Anti AI Talk",
+    "shortDescription": "Plain, concrete prose in any language",
+    "longDescription": "Applies 100 rules against formulaic LLM writing to chat replies, docs, UI text, fiction and code comments. Full rule sets for German and English, applied by meaning to other languages.",
+    "developerName": "KGRNxo",
+    "category": "Productivity",
+    "capabilities": ["Write"],
+    "defaultPrompt": ["Rewrite this text without LLM phrasing"]
+  }
+}
