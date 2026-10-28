@@ -1,0 +1,14 @@
+{
+  "name": "anti-ai-talk",
+  "owner": {
+    "name": "KGRNxo"
+  },
+  "plugins": [
+    {
+      "name": "anti-ai-talk",
+      "source": "./plugins/anti-ai-talk",
+      "description": "Removes formulaic LLM prose. 100 rules, German and English, any language."
+    }
+  ],
+  "description": "Anti-LLM-prose skill for Claude Code and Codex."
+}

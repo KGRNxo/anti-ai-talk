@@ -1,0 +1,12 @@
+{
+  "name": "anti-ai-talk",
+  "interface": { "displayName": "Anti AI Talk" },
+  "plugins": [
+    {
+      "name": "anti-ai-talk",
+      "source": { "source": "local", "path": "./plugins/anti-ai-talk" },
+      "policy": { "installation": "AVAILABLE", "authentication": "ON_INSTALL" },
+      "category": "Productivity"
+    }
+  ]
+}

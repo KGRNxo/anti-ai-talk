@@ -1,0 +1,10 @@
+{
+  "name": "anti-ai-talk",
+  "version": "1.0.0",
+  "description": "Removes formulaic LLM prose from everything Claude writes. 100 rules for German and English, applicable to any language.",
+  "author": { "name": "KGRNxo" },
+  "homepage": "https://github.com/KGRNxo/anti-ai-talk",
+  "repository": "https://github.com/KGRNxo/anti-ai-talk",
+  "license": "MIT",
+  "keywords": ["writing", "style", "anti-slop", "humanizer", "deutsch", "english", "multilingual"]
+}
