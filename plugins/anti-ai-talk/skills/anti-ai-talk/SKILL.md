@@ -14,7 +14,8 @@ Write so that no sentence exists only because it sounds elegant, complete, profe
    - German output: `references/rules.de.md`
    - English output: `references/rules.en.md`
    - Any other language: read `references/rules.en.md` and apply each rule by meaning. Translate the banned phrases and word lists into the target language yourself and ban the common equivalents there. Read `references/other-languages.md` for pitfalls.
-3. Draft with the rules in mind. Do not announce that you are doing so.
+   If the file cannot be read, use the checklist below. For a short chat reply the checklist alone is enough.
+3. Draft with the rules in mind. Never mention this skill, the rule files, or whether you loaded them in the output.
 4. Before sending, reread the draft against the checklist below. Fix hits by deleting or replacing with the concrete fact. Do not swap synonyms to dodge a pattern; rebuild the sentence.
 
 ## Scope

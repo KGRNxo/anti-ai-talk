@@ -55,6 +55,12 @@ codex plugin marketplace add KGRNxo/anti-ai-talk
 
 Danach im Plugin-Browser von Codex (`/plugins`) `anti-ai-talk` installieren.
 
+Codex lädt Skills nur, wenn es eine Aufgabe als Schreibaufgabe einstuft. Damit die Regeln für jede Antwort gelten, diese Zeile in `~/.codex/AGENTS.md` (alle Projekte) oder in die `AGENTS.md` eines Repositorys eintragen:
+
+```markdown
+Apply the anti-ai-talk skill to every reply and every text you write, including short chat answers, commit messages and code comments.
+```
+
 Hat deine Codex-Version keine Plugin-Unterstützung, kopiere den Skill-Ordner:
 
 ```bash
@@ -69,7 +75,11 @@ Der Skill ist ein normaler `SKILL.md`-Ordner. Jeder Agent mit Unterstützung fü
 
 ## Benutzung
 
-Der Skill greift von selbst, sobald der Agent Text schreibt oder überarbeitet. Du kannst ihn auch direkt anfordern:
+In Claude Code bringt das Plugin einen `SessionStart`-Hook mit. Er legt die Checkliste bei jedem Sitzungsstart, nach `/clear` und nach einer Kompaktierung in den Kontext. Die Regeln gelten dann für jede Antwort und nicht nur für Aufgaben, die das Modell als Schreibaufgabe einstuft. Der Hook gibt rund 60 Zeilen Text aus und führt sonst nichts aus.
+
+Für Codex siehe die `AGENTS.md`-Zeile oben.
+
+Der Skill greift außerdem von selbst, sobald der Agent Text schreibt oder überarbeitet. Du kannst ihn auch direkt anfordern:
 
 - „Schreib das ohne KI-Floskeln neu.“
 - „Rewrite this without LLM phrasing.“
@@ -89,7 +99,8 @@ Für eine neue Sprache `rules.en.md` nach `rules.<code>.md` kopieren, Muster und
 
 ## Grenzen
 
-- Das ist eine Anweisung, kein Filter. Das Modell hält sich mit der üblichen Streuung daran, und lange Texte driften. Zeigt ein Entwurf noch ein Muster, die Stelle benennen und erneut anfordern.
+- Das ist eine Anweisung, kein Filter. Die Muster werden deutlich seltener, verschwinden aber nicht ganz: In Tests rutschten einzelne Reste durch, etwa eine Dreierreihe oder „an einem Ort“. Lange Texte driften stärker. Zeigt ein Entwurf noch ein Muster, die Stelle benennen und erneut anfordern.
+- Die dauerhaft geladene Checkliste kostet etwa 1.500 Tokens Kontext pro Sitzung. Die vollständigen Regeldateien (je 5.000 bis 7.000 Tokens) werden nur geladen, wenn das Modell sie liest.
 - Wer ein Muster verbietet, macht den Text noch nicht gut. Der Skill entfernt Füllmaterial. Inhalt, Aufbau und Stimme kommen weiterhin von dir und dem Modell.
 - Wortverbote gelten für übertragenen oder schmückenden Gebrauch. Fachbegriffe, Zitate, Namen und Code sind ausgenommen.
 - Der Skill umgeht keine KI-Detektoren und versucht es auch nicht (Regel 99).
@@ -102,6 +113,8 @@ Für eine neue Sprache `rules.en.md` nach `rules.<code>.md` kopieren, Muster und
 plugins/anti-ai-talk/
   .claude-plugin/plugin.json           Manifest für Claude Code
   .codex-plugin/plugin.json            Manifest für Codex
+  hooks/hooks.json                     SessionStart-Hook für Claude Code
+  hooks/session-start.sh               gibt die Checkliste in den Kontext aus
   skills/anti-ai-talk/
     SKILL.md                           Ablauf und Checkliste
     references/rules.de.md             100 Regeln, Deutsch

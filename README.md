@@ -55,6 +55,12 @@ codex plugin marketplace add KGRNxo/anti-ai-talk
 
 Then open the plugin browser in Codex (`/plugins`) and install `anti-ai-talk`.
 
+Codex loads skills only when it judges a task to be a writing task. To apply the rules to every reply, add this line to `~/.codex/AGENTS.md` (all projects) or to `AGENTS.md` in a repository:
+
+```markdown
+Apply the anti-ai-talk skill to every reply and every text you write, including short chat answers, commit messages and code comments.
+```
+
 If your Codex version has no plugin support, copy the skill folder instead:
 
 ```bash
@@ -69,7 +75,11 @@ The skill is a plain `SKILL.md` folder. Any agent that supports the Agent Skills
 
 ## Use
 
-The skill triggers on its own whenever the agent writes or rewrites text. You can also ask for it directly:
+In Claude Code the plugin ships a `SessionStart` hook that puts the checklist into context at the start of every session, after `/clear` and after compaction. The rules then apply to every reply, not only to tasks the model classifies as writing. The hook prints about 60 lines of text and runs nothing else.
+
+In Codex, see the `AGENTS.md` line above.
+
+The skill also triggers on its own whenever the agent writes or rewrites text. You can also ask for it directly:
 
 - "Rewrite this without LLM phrasing."
 - "Schreib das ohne KI-Floskeln neu."
@@ -89,7 +99,8 @@ To add a language, copy `rules.en.md` to `rules.<code>.md`, translate the patter
 
 ## Limits
 
-- This is an instruction set, not a filter. The model follows it with the usual variance, and long outputs drift. If a draft still shows a pattern, point at the sentence and ask again.
+- This is an instruction set, not a filter. It cuts the patterns down a lot but not to zero: in tests, single leftovers such as a group of three or "all in one place" still slipped through. Long outputs drift more. If a draft still shows a pattern, point at the sentence and ask again.
+- The always-on checklist costs about 1,500 tokens of context per session. The full rule files (5,000 to 7,000 tokens each) load only when the model decides to read them.
 - Banning a pattern does not make a text good. The skill removes filler. Facts, structure and voice still come from you and the model.
 - Word bans apply to figurative or decorative use. Technical terms, quotations, names and code are exempt.
 - The skill does not evade AI detectors and will not try to (rule 99).
@@ -102,6 +113,8 @@ To add a language, copy `rules.en.md` to `rules.<code>.md`, translate the patter
 plugins/anti-ai-talk/
   .claude-plugin/plugin.json           Claude Code manifest
   .codex-plugin/plugin.json            Codex manifest
+  hooks/hooks.json                     Claude Code SessionStart hook
+  hooks/session-start.sh               prints the checklist into context
   skills/anti-ai-talk/
     SKILL.md                           procedure and checklist
     references/rules.de.md             100 rules, German
