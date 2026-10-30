@@ -1,0 +1,5 @@
+# Requires 'context-mode' installed in Codex host PATH. Trusted project only.
+# This MCP definition does not install Ponytail or activate/trust hooks.
+[mcp_servers.context-mode]
+command = "context-mode"
+env = { CONTEXT_MODE_PLATFORM = "codex" }
