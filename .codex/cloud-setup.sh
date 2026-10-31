@@ -27,7 +27,7 @@ verify() {
     echo 'Context Mode executable found; MCP connection and ctx_* tools still require a real Codex session check.'
   fi
 
-  if [[ -d "$HOME/.codex" ]] && find "$HOME/.codex" -type f -name SKILL.md -path '*impeccable*' -print -quit 2>/dev/null | grep -q .; then
+  if { [[ -d "$HOME/.agents/skills" ]] && find "$HOME/.agents/skills" -type f -name SKILL.md -path '*impeccable*' -print -quit 2>/dev/null | grep -q .; } || { [[ -d "$HOME/.codex" ]] && find "$HOME/.codex" -type f -name SKILL.md -path '*impeccable*' -print -quit 2>/dev/null | grep -q .; }; then
     echo 'Impeccable Codex skill files found; automatic hooks are not thereby verified.'
   else
     echo 'Impeccable skill not detected under ~/.codex; inspect the Codex skill/plugin list.' >&2
