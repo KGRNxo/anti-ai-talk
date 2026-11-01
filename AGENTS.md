@@ -35,3 +35,39 @@ Bestehende `DESIGN.md`, `PRODUCT.md`, Markenidentität, Plattformkonventionen, S
 Lies und beachte `docs/AI_WORKFLOW.md` fuer jede Entwicklungsaufgabe in diesem Repository.
 Bestehende spezifische Regeln dieser Datei bleiben gueltig.
 <!-- /ai-workflow-shared-v1 -->
+
+<!-- BEGIN GLOBAL-CODING-WORKFLOW -->
+## Dauerhafte Entwicklungsregeln
+
+Bei jeder Coding-Aufgabe:
+
+1. Context Mode nutzen, wenn verfügbar:
+   Kontext progressiv und gezielt laden.
+   Umfangreiche Ausgaben über Context-Mode-Werkzeuge
+   analysieren. Vorhandenen Kontext wiederverwenden.
+
+2. Ponytail im Modus full anwenden:
+   Die kleinste vollständige, korrekte und wartbare
+   Lösung implementieren. Keine unnötigen Abstraktionen.
+   Niemals Sicherheit, Tests oder notwendige
+   Fehlerbehandlung einsparen.
+
+3. JFrog Boost bei unterstützten Terminalbefehlen
+   automatisch verwenden, wenn die Integration aktiv ist.
+   Bei unklaren Fehlern Originalausgaben abrufen.
+
+4. Impeccable für alle relevanten UI/UX-Arbeiten
+   verwenden. Designsystem, Barrierefreiheit,
+   Plattformkonventionen und Hell-/Dunkelmodus prüfen.
+   Bei größeren UI-Änderungen einen Audit durchführen.
+
+Prioritäten:
+Korrektheit und Datensicherheit,
+Anforderungsvollständigkeit,
+Produktqualität, Tests und Wartbarkeit,
+Performance,
+minimaler Ressourcenverbrauch.
+
+Vorhandene projektspezifische Regeln beachten.
+Fehlende Plugins nicht als aktiv ausgeben.
+<!-- END GLOBAL-CODING-WORKFLOW -->
