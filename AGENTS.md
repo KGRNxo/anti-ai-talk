@@ -29,3 +29,9 @@ Plugin-/Skill-Repo: 100 Sprachregeln, Manifeste und Portabilität bewahren; kein
 Bei jeder UI-/UX-Implementierung, Designprüfung, visuellen Änderung, Accessibility- oder Responsivitätsarbeit den **offiziellen Impeccable-Skill** nutzen, sofern er in der aktuellen Codex-Umgebung tatsächlich installiert und geladen ist. Prüfe dies jeweils; bei Bedarf zunächst den Projekt-Skill `.agents/skills/impeccable-ui-integration/SKILL.md` lesen. Die reproduzierbare **offizielle** Codex-Projektinstallation ist in `.codex/install-impeccable.sh` hinterlegt (Ausführung: `bash .codex/install-impeccable.sh`). Externe Installation oder Hook-Freigabe nicht allein aus einer Anweisung behaupten.
 
 Bestehende `DESIGN.md`, `PRODUCT.md`, Markenidentität, Plattformkonventionen, Sicherheits- und Fachvorgaben behalten Vorrang vor Design-Heuristiken. Impeccable ergänzt Context Mode und Ponytail ausschließlich bei UI-bezogenen Aufgaben; bei Backend-/Datenaufgaben kein künstliches Design-Audit erzwingen. Vor Abschluss relevante UI-Zustände, Themes, Bildschirmgrößen, Barrierefreiheit und tatsächliche Testergebnisse überprüfen. Hooks müssen vom Nutzer in Codex freigegeben werden. Kein automatisches Mergen oder Veröffentlichen.
+
+<!-- ai-workflow-shared-v1 -->
+## Gemeinsame Entwicklungsregeln
+Lies und beachte `docs/AI_WORKFLOW.md` fuer jede Entwicklungsaufgabe in diesem Repository.
+Bestehende spezifische Regeln dieser Datei bleiben gueltig.
+<!-- /ai-workflow-shared-v1 -->
